@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บริการขอเอกสารสำคัญทางการศึกษา - รร.นนก.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-navy: #09192b;
+            --secondary-navy: #132a45;
+            --accent-blue: #0088cc;
+            --light-blue: #e6f3ff;
+            --accent-gold: #e2b13c;
+            --gold-hover: #c99928;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --card-shadow: 0 10px 25px -5px rgba(9, 25, 43, 0.08), 0 8px 10px -6px rgba(9, 25, 43, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, .heading-font {
+            font-family: 'Prompt', sans-serif;
+        }
+
+        /* Header / Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 60%, #1a3d68 100%);
+            color: var(--white);
+            padding: 2.5rem 1.5rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 136, 204, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: var(--bg-light);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-wrapper {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--transparent);
+            border-radius: 0%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px;
+            box-shadow: none;
+            transition: var(--transition);
+        }
+
+        
+            
+            
+        
+
+        .school-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header-text {
+            flex-grow: 1;
+        }
+
+        .header-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.5px;
+        }
+
+        .header-sub {
+            font-size: 1.15rem;
+            color: #d1d5db;
+            font-weight: 400;
+        }
+
+        .header-dept {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: -1.5rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 3;
+            flex-grow: 1;
+        }
+
+        /* Description Box */
+        .intro-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--accent-gold);
+            text-align: center;
+        }
+
+        .intro-card p {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        .intro-card .highlight-text {
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        /* Section Heading */
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+            border-radius: 2px;
+        }
+
+        /* QR Grid */
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .qr-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-blue);
+        }
+
+        .qr-card.gold-theme::before {
+            background: var(--accent-gold);
+        }
+
+        .qr-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -10px rgba(9, 25, 43, 0.15);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            color: var(--accent-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .gold-theme .card-icon {
+            background: #fffbeb;
+            color: #d97706;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            height: 42px;
+            display: flex;
+            align-items: center;
+        }
+
+        .qr-image-box {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 16px;
+            box-shadow: inset 0 0 0 1px #e2e8f0;
+            margin-bottom: 1.5rem;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .qr-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 0.85rem 1.25rem;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Prompt', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #1a3a60;
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-hover);
+        }
+
+        /* Steps Section */
+        .steps-wrapper {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary-navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.05rem;
+            color: var(--primary-navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: #9ca3af;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer strong {
+            color: #d1d5db;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-banner {
+                padding: 2rem 1rem 3rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .logo-wrapper {
+                width: 110px;
+                height: 110px;
+            }
+
+            .header-title {
+                font-size: 1.6rem;
+            }
+
+            .header-sub {
+                font-size: 1rem;
+            }
+
+            .container {
+                margin-top: -1rem;
+            }
+
+            .intro-card {
+                padding: 1.25rem;
+            }
+
+            .intro-card p {
+                font-size: 1rem;
+            }
+
+            .qr-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <header class="hero-banner">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <!-- โลโก้โรงเรียนนายเรืออากาศนวมินทกษัตริยาธิราช -->
+                <img src="logo.png" alt="ตราโรงเรียนนายเรืออากาศนวมินทกษัตริยาธิราช" class="school-logo">
+            </div>
+            <div class="header-text">
+                <h1 class="header-title">บริการขอเอกสารสำคัญทางการศึกษา</h1>
+                <div class="header-sub">กองสถิติและประเมินผล</div>
+                <div class="header-dept"><i class="fa-solid =>-shield-halved"></i> โรงเรียนนายเรืออากาศนวมินทกษัตริยาธิราช</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Intro Card -->
+        <div class="intro-card">
+            <p>
+                กองสถิติและประเมินผล โรงเรียนนายเรืออากาศนวมินทกษัตริยาธิราช เปิดให้บริการยื่นคำร้องขอเอกสารสำคัญทางการศึกษาผ่านช่องทางออนไลน์ทั้งหมด 
+                สแกน <span class="highlight-text">QR Code</span> หรือคลิกปุ่มยื่นคำร้องด้านล่างเพื่อสะดวกรวดเร็วในการดำเนินงาน
+            </p>
+        </div>
+
+        <!-- Request Section -->
+        <h2 class="section-title">เลือกประเภทคำร้องขอเอกสาร</h2>
+
+        <div class="qr-grid">
+            <!-- Card 1: Transcript -->
+            <div class="qr-card">
+                
+                <h3 class="card-title">สำหรับนักเรียนนายเรืออากาศ</h3>
+                
+                <div class="qr-image-box">
+                    <img src="qr-code1.png" alt="QR Code นนอ.">
+                </div>
+
+                <a href="https://script.google.com/macros/s/AKfycbwsekL4HLocEDM7XVIDPB7-birRvzWUeEwoJ0Xamg3OPykM8GtWjCqERM474rr45YETUg/exec" class="btn-action btn-primary">
+                    <i class="fa-solid fa-qrcode"></i> ยื่นคำร้อง
+                </a>
+            </div>
+
+            <!-- Card 2: Certificate & Others -->
+            <div class="qr-card gold-theme">
+                
+                <h3 class="card-title">สำหรับศิษย์เก่า (ชนอ.)</h3>
+                
+                <div class="qr-image-box">
+                    <img src="qr-code2.png" alt="QR Code ชนอ.">
+                </div>
+
+                <a href="https://script.google.com/macros/s/AKfycbzNMvD5g1w_ArykOA7Yxn4d-ZK45T47cWIOWC2XHvbHmCKOEXccnW7M3QBh05XWj0AzRA/exec" class="btn-action btn-gold">
+                    <i class="fa-solid fa-qrcode"></i> ยื่นคำร้อง
+                </a>
+            </div>
+        </div>
+
+        <!-- Steps Section -->
+        <div class="steps-wrapper">
+            <h3 class="section-title" style="font-size: 1.3rem; margin-bottom: 1rem;">ขั้นตอนการยื่นคำร้องออนไลน์</h3>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>เลือกประเภทคำร้องขอเอกสาร</h4>
+                        <p>สแกน QR Code ตามประเภทผู้ขอเอกสาร</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>กรอกข้อมูลรายละเอียด</h4>
+                        <p>กรอกข้อมูลผู้ยื่นคำร้องและแนบหลักฐานให้ครบถ้วน</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>รอรับการแจ้งเตือน</h4>
+                        <p>เมื่อเอกสารเสร็จเรียบร้อยแล้วจะแจ้งให้ทราบทางอีเมล</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 แผนกทะเบียนประวัติ กองสถิติและประเมินผล <strong>โรงเรียนนายเรืออากาศนวมินทกษัตริยาธิราช</strong></p>
+    </footer>
+
+</body>
+</html>
